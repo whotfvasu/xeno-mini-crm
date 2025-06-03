@@ -1,7 +1,13 @@
 import mongoose, { mongo } from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
 const orderSchema = new mongoose.Schema(
   {
+    orderId: {
+      type: String,
+      unique: true,
+      default: uuidv4, 
+    },
     customer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Customer",
