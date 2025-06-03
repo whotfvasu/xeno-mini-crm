@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import customerRoutes from "./routes/customerRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import segmentRoutes from "./routes/segmentRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 
 app.use("/api", customerRoutes);
 app.use("/api", orderRoutes);
+app.use("/api", segmentRoutes);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
