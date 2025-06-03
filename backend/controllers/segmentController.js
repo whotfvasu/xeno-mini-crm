@@ -44,3 +44,13 @@ export const createSegment = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const getSegments = async (req, res) => {
+  try {
+    const segments = await Segment.find().sort({ createdAt: -1 }); // Sort by most recent
+    res.status(200).json(segments);
+  } catch (error) {
+    console.error("Error fetching segments:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
